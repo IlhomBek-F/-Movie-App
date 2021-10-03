@@ -1,0 +1,63 @@
+.movie__image {
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.row__img {
+  width: 100%;
+  height: 100%;
+}
+
+.movie__container {
+  margin-top: 40px;
+}
+
+.movie {
+  width: 290px;
+  height: 500px;
+  background: #1e1b26;
+  display: flex;
+  flex-direction: column;
+  border-radius: 3px;
+  margin: 10px 10px;
+  box-shadow: 0 0 20px black;
+  transition: all 0.7s ease-in-out;
+}
+
+.movie:hover {
+  transform: scale(1.09);
+  transition: all 0.7s ease-in-out;
+  box-shadow: 0px 0px 10px 5px pink;
+}
+
+.movie__info {
+  margin: 10px 20px;
+}
+
+.title {
+  font-size: 21px;
+  padding: 10px 0px;
+  color: #fff;
+}
+
+.movie__text p {
+  color: grey;
+}
+
+.more__btn {
+  margin-top: 25px;
+  font-size: 17px;
+  width: 100px;
+  border: none;
+  outline: none;
+  padding: 5px;
+  background-color: rgb(142, 182, 140);
+  transition: all 0.7s ease-in-out;
+}
+
+.more__btn:hover {
+  background-color: lightgreen;
+  transition: all 0.7s ease-in-out;
+  cursor: pointer;
+}
