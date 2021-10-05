@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../css/navbar.css";
+import { Link } from "react-router-dom";
 function Navbar() {
   const [show, handleShow] = useState(false);
   useEffect(() => {
@@ -18,7 +19,9 @@ function Navbar() {
 
   return (
     <div className={`nav ${show && "nav__black"}`}>
-      <img src="https://elementor.dostguru.com/cms/animex/wp-content/uploads/2020/12/logo.png" />
+      <Link to="/home">
+        <img src="https://elementor.dostguru.com/cms/animex/wp-content/uploads/2020/12/logo.png" />
+      </Link>
     </div>
   );
 }

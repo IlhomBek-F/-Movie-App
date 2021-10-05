@@ -1,23 +1,19 @@
 import React, { useState, useEffect } from "react";
 import requests from "../API/requests";
 import MovieRow from "./movieRow";
-
 import "../css/categories.css";
+import { Link } from "react-router-dom";
 
-function Categories({ baseURL }) {
-  const [movieCategory, setMovieCategorie] = useState([]);
-
+function Categories({
+  baseURL,
+  movieCategory,
+  setMovieCategorie,
+  setCategoryTitle,
+}) {
   const [value, setValue] = useState("");
 
   const searchURL =
     "https://api.themoviedb.org/3/search/movie?&api_key=ea06223202fdd977cc314b750969e6f7&query=";
-  const handleURL = async (ctr) => {
-    const base = await fetch(baseURL + ctr);
-
-    const response = await base.json();
-
-    setMovieCategorie(response.results);
-  };
 
   const movieDefault = async () => {
     const req = await fetch(baseURL + requests.fetchTopRated);
@@ -29,26 +25,46 @@ function Categories({ baseURL }) {
   useEffect(() => {
     movieDefault();
   }, []);
+
+  const handleURL = async (ctr) => {
+    const base = await fetch(baseURL + ctr);
+
+    const response = await base.json();
+
+    setMovieCategorie(response.results);
+
+    console.log(movieCategory);
+  };
   const handleCategories = (e) => {
     switch (e.target.id) {
       case "rated":
         handleURL(requests.fetchTopRated);
+        setCategoryTitle("Rated");
         e.target.className = "active";
         break;
       case "action":
         handleURL(requests.fetchActionMovies);
+        setCategoryTitle("Action");
+
         break;
       case "trending":
         handleURL(requests.fetchTrending);
+        setCategoryTitle("Trending");
         break;
       case "horror":
         handleURL(requests.fetchHorrorMovies);
+        setCategoryTitle("Horror");
+
         break;
       case "romance":
         handleURL(requests.fetchRomanceMovies);
+        setCategoryTitle("Romance");
+
         break;
       case "documentary":
         handleURL(requests.fetchDocumentaries);
+        setCategoryTitle("Documentary");
+
         break;
       default:
         return handleURL(requests.fetchNetflixOriginals);
@@ -75,24 +91,31 @@ function Categories({ baseURL }) {
         <div className="content">
           <h1>Categories</h1>
           <ul>
-            <li id="rated" onClick={handleCategories}>
-              Top Rated
-            </li>
-            <li id="action" onClick={handleCategories}>
-              Action
-            </li>
-            <li id="trending" onClick={handleCategories}>
-              Trending
-            </li>
-            <li id="horror" onClick={handleCategories}>
-              Horror
-            </li>
-            <li id="romance" onClick={handleCategories}>
-              Romance
-            </li>
-            <li id="documentary" onClick={handleCategories}>
-              Documentary
-            </li>
+            <Link className="link" to="card:card" onClick={handleCategories}>
+              <li id="rated">Top Rated</li>
+            </Link>
+            <Link className="link" to="card:card" onClick={handleCategories}>
+              <li id="action">Action</li>
+            </Link>
+
+            <Link className="link" to="card:card" onClick={handleCategories}>
+              <li id="trending">Trending</li>
+            </Link>
+
+            <Link className="link" to="card:card">
+              <li id="horror" onClick={handleCategories}>
+                Horror
+              </li>
+            </Link>
+
+            <Link className="link" to="card:card">
+              <li id="romance" onClick={handleCategories}>
+                Romance
+              </li>
+            </Link>
+            <Link className="link" to="card:card" onClick={handleCategories}>
+              <li id="documentary">Documentary</li>
+            </Link>
           </ul>
           <div className="search">
             <form onSubmit={handleSearch}>

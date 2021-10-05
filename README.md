@@ -6,7 +6,7 @@
 
 # You can separate them by their genre.
 
-<img src="./public/Categories.PNG">
+<img src="./public/CategoryPage.PNG">
 
 # You can find whatever movie you want by searching them.
 
